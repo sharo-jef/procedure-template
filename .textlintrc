@@ -21,7 +21,7 @@
         "no-mixed-zenkaku-and-hankaku-alphabet": true,
         "no-hankaku-kana": true,
         "max-kanji-continuous-len": {
-            max: 5,
+            max: 7,
             allow: [],
         },
         "no-doubled-conjunctive-particle-ga": true,

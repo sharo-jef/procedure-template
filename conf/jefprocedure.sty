@@ -5,6 +5,10 @@
 \usepackage{color}
 \usepackage{enumitem}
 
+\usepackage{ifthen}
+
+\usepackage{./conf/jefjobun}
+
 % ヘッダ定義
 \makeatletter
 \def\@documentnumber{}
@@ -57,32 +61,32 @@
         }
 }
 \def\@seccnt@prefix@subsection{}
-\def\@seccnt@postfix@subsection{.}
+\def\@seccnt@postfix@subsection{}
 \def\@seccnt@afterskip@subsection{}
 \renewcommand{\subsection}{
     \@startsection{subsection}
         {2}
         {\z@}
-        {0\Cvs \@plus.5\Cvs \@minus.2\Cvs}
+        {1\Cvs \@plus.5\Cvs \@minus.2\Cvs}
         {.5\Cvs \@plus.3\Cvs}
         {
             \normalfont
-            \sffamily
-            \gtfamily
+            % \sffamily
+            % \gtfamily
         }
 }
 % subsectionが1.1みたいになるのを1に変える
-\renewcommand{\thesubsection}{\@arabic\c@subsection}
-\renewcommand{\thesubsubsection}{
-    % \thesubsection.\@arabic\c@subsubsection
-    (\@arabic\c@subsubsection)
-}
-\renewcommand{\theparagraph}{
-    \thesubsubsection.\@arabic\c@paragraph
-}
-\renewcommand{\thesubparagraph}{
-    \theparagraph.\@arabic\c@subparagraph
-}
+% \renewcommand{\thesubsection}{\@arabic\c@subsection}
+% \renewcommand{\thesubsubsection}{
+%     % \thesubsection.\@arabic\c@subsubsection
+%     (\@arabic\c@subsubsection)
+% }
+% \renewcommand{\theparagraph}{
+%     \thesubsubsection.\@arabic\c@paragraph
+% }
+% \renewcommand{\thesubparagraph}{
+%     \theparagraph.\@arabic\c@subparagraph
+% }
 
 %
 % 以下のように利用する
@@ -100,7 +104,42 @@
 ラ\or リ\or ル\or レ\or ロ\or
 ワ\or ヲ\or ン\fi}
 \AddEnumerateCounter{\aiu}{\@aiu}{(ア)}
+
+\newcommand{\heading}[1][]{\noindent（#1） \par}
+
+\newcommand\besshi[1][1]{
+    \newpage
+    \begin{flushright}%
+        別紙第#1%
+    \end{flushright}%
+}
+\newcommand\besshirimen[1][1]{
+    \newpage
+    \begin{flushright}%
+        別紙第#1（裏面）%
+    \end{flushright}%
+}
+
+\newcommand\youshiki[1][1]{
+    \newpage
+    \begin{flushright}%
+        第#1号様式%
+    \end{flushright}%
+}
+\newcommand\youshikirimen[1][1]{
+    \newpage
+    \begin{flushright}%
+        第#1号様式（裏面）%
+    \end{flushright}%
+}
 \makeatother
 % ヘッダ定義終了
 
 % \renewcommand{\labelenumi}{(\arabic{enumi})}
+
+% \newenvironment{fusoku}[1][]{\begingroup\par \noindent \vskip 1\myzw {\hspace{0\myzw}附　則} \ifthenelse{\equal{#1}{}}{}{（#1）} \par}
+% {\endgroup\par}
+% \newenvironment{fusokushou}[1][]{\begingroup\par \noindent \vskip 1\myzw {\hspace{0\myzw}附　則　抄} \ifthenelse{\equal{#1}{}}{}{（#1）} \par}
+% {\endgroup\par}
+% \newenvironment{fusoku}[1][]{\begingroup\par \noindent \vskip 1\myzw {\hspace{0\myzw}附　則} \ifthenelse{\equal{#1}{}}{}{（#1）} （抄） \par}
+% {\endgroup\par}

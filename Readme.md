@@ -52,24 +52,6 @@ dvipdfmx document.dvi
 
 `\date` 内に制定時の文書番号を記述する場合は、 `\documentnumber` を使用しない。
 
-```latex
-% 以下の場合は \documentnumber は必要ない。
-\date{
-    {
-        令和 1年 1月 1日　制　　定　（創第0号）\\
-        令和 2年 2月 1日　一部改定　（創第1号）
-    }
-}
-
-% 以下の場合は \documentnumber が必要。
-\documentnumber{創第0号}
-\date{
-    {
-        令和 2年 2月 1日　一部改定　（創第1号）
-    }
-}
-```
-
 章には `\section` を使用する。
 
 節以下には `\subsection`、 `\subsubsection` や、 `enumerate環境` を用いる。
@@ -89,3 +71,5 @@ dvipdfmx document.dvi
     \end{enumerate}
 \end{enumerate}
 ```
+
+附則内は `\kou` を用いて項分けする。
